@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/farmers"
+    tools:context=".Login_page">
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="131dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginEnd="60dp"
+        android:backgroundTint="#C4494CFB"
+        android:outlineProvider="background"
+        android:rotationX="4"
+        android:text=" giriş yap"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toTopOf="@+id/uyedegilmisin"
+        app:layout_constraintEnd_toEndOf="@+id/emailet"
+        app:layout_constraintStart_toStartOf="@+id/passwordet"
+        app:layout_constraintTop_toBottomOf="@+id/passwordet" />
+
+    <Button
+        android:id="@+id/withphonenumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="220dp"
+        android:backgroundTint="#F39828"
+        android:text="telefon numarası ile kayıt ol"
+        android:textColor="#050505"
+        app:layout_constraintBottom_toTopOf="@+id/withgooglebtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/uyedegilmisin" />
+
+    <EditText
+        android:id="@+id/emailet"
+        android:layout_width="242dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="25dp"
+        android:ems="10"
+        android:hint="telefon numaranızı giriniz"
+        android:inputType="textEmailAddress"
+        app:layout_constraintBottom_toTopOf="@+id/passwordet"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/passwordet"
+        android:layout_width="243dp"
+        android:layout_height="53dp"
+        android:layout_marginBottom="22dp"
+        android:ems="10"
+        android:hint="şifrenizi giriniz"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/emailet" />
+
+    <TextView
+        android:id="@+id/uyedegilmisin"
+        android:layout_width="112dp"
+        android:layout_height="28dp"
+        android:layout_marginBottom="1dp"
+        android:background="#008B00FF"
+        android:gravity="center"
+        android:text="Üye değil misin ?"
+        android:textColor="#0E0D0D"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toTopOf="@+id/withphonenumber"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button" />
+
+    <Button
+        android:id="@+id/withgooglebtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="17dp"
+        android:backgroundTint="#F39828"
+        android:onClick="withgoogle"
+        android:text="e-posta adresi ile kayı ol"
+        android:textColor="#000000"
+        app:layout_constraintStart_toStartOf="@+id/withphonenumber"
+        app:layout_constraintTop_toBottomOf="@+id/withphonenumber" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
