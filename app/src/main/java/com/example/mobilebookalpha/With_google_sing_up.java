@@ -1,8 +1,10 @@
 package com.example.mobilebookalpha;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -18,9 +20,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class With_google_sing_up extends AppCompatActivity {
-    EditText emailet, passwordet;
-    Button enterbt;
-    FirebaseAuth auth = FirebaseAuth.getInstance();
+    private EditText emailet, passwordet;
+    private Button enterbt;
+    private FirebaseAuth auth = FirebaseAuth.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +32,19 @@ public class With_google_sing_up extends AppCompatActivity {
         enterbt = findViewById(R.id.button3);
         emailet = findViewById(R.id.emailEt);
         passwordet = findViewById(R.id.passwordEt);
+        AlertDialog.Builder builder = new AlertDialog.Builder(With_google_sing_up.this);
+        builder.setTitle("Mobildefter");
 
+        builder.setMessage("şifrenizi unutmanız riskinize karşılık geçerli bi google hesabı giriniz");
+
+        builder.setPositiveButton("okudum anladım", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+
+            }
+        });
+        builder.show();
 
         enterbt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,9 +78,8 @@ public class With_google_sing_up extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(), "hesap oluşturulurken bir hata oluştu lütfen tekrar deneyiniz", Toast.LENGTH_LONG).show();
 
                         }
-
-                        // ...
                     }
+
                 });
 
 

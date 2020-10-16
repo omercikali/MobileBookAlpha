@@ -5,9 +5,9 @@
 
     <!-- buton arkaplan rengi -->
     <gradient
-        android:startColor="#FF1493"
+        android:startColor="#FFD700"
         android:centerColor="#FF8C00"
-        android:endColor="#00FFFF"></gradient>
+        android:endColor="#FF6347"></gradient>
 
     <!-- dolgu -->
     <padding
@@ -19,7 +19,7 @@
 
     <!-- ovallikler -->
     <corners
-        android:radius="60dp"   >
+        android:radius="30dp"   >
     </corners>
 
 </shape>

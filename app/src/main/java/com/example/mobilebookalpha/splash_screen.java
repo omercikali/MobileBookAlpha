@@ -11,8 +11,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class splash_screen extends AppCompatActivity {
-    ImageView imageView;
-    TextView textView;
+    private ImageView imageView;
+    private TextView textView;
 
 
     @Override
@@ -36,7 +36,7 @@ public class splash_screen extends AppCompatActivity {
                 Intent intent = new Intent(splash_screen.this, Login_page.class);
                 startActivity(intent);
                 finish();
-                overridePendingTransition(R.anim.anim_in,R.anim.anim_out);
+                overridePendingTransition(R.anim.anim_in, R.anim.anim_out);
 
             }
         }, 5500);
