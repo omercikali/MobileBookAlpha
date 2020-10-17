@@ -15,6 +15,8 @@ public class Workers_page extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-      
+        overridePendingTransition(R.anim.turn_anim_in,R.anim.turn_anim_out);
     }
+
+
 }

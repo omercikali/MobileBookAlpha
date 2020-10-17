@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,12 +26,14 @@ public class Login_page extends AppCompatActivity {
     private EditText emailet, passwordet;
     private FirebaseAuth auth;
     private TextView forgatmypass;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_page);
 
+        progressBar = findViewById(R.id.progressBar);
         emailet = findViewById(R.id.emailet);
         passwordet = findViewById(R.id.passwordet);
         withphonenumber = findViewById(R.id.withphonenumber);
@@ -38,6 +41,8 @@ public class Login_page extends AppCompatActivity {
         withgoogleaccount = findViewById(R.id.withgooglebtn);
         loginbutton = findViewById(R.id.button);
         forgatmypass = findViewById(R.id.forgatmypass);
+
+        progressBar.setVisibility(View.INVISIBLE);
 
         forgatmypass.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,8 +58,13 @@ public class Login_page extends AppCompatActivity {
 
                 String usernameStr = emailet.getText().toString();
                 String passwordStr = passwordet.getText().toString();
-                singin(usernameStr, passwordStr);
+                if (!usernameStr.equals("")) {
+                    singin(usernameStr, passwordStr);
+                    progressBar.setVisibility(View.VISIBLE);
+                } else {
 
+                    Toast.makeText(getApplicationContext(), "lütfen geçerli bir e-posta giriniz", Toast.LENGTH_LONG).show();
+                }
 
             }
         });
@@ -88,6 +98,7 @@ public class Login_page extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
+
                             Intent intent = new Intent(Login_page.this, MainActivity.class);
                             startActivity(intent);
                             finish();

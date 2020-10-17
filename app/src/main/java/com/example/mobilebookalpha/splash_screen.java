@@ -22,12 +22,10 @@ public class splash_screen extends AppCompatActivity {
         imageView = findViewById(R.id.imageView);
         textView = findViewById(R.id.textView);
 
-
         Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.anime);
         Animation sclaeanimation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.scalea_nime);
         imageView.setAnimation(sclaeanimation);
         textView.setAnimation(animation);
-
 
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -40,7 +38,5 @@ public class splash_screen extends AppCompatActivity {
 
             }
         }, 5500);
-
-
     }
 }
