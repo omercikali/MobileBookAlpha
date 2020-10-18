@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class splash_screen extends AppCompatActivity {
-    private ImageView imageView;
+    private ImageView imageView,uptadeaide;
     private TextView textView;
 
 
@@ -21,11 +21,13 @@ public class splash_screen extends AppCompatActivity {
         setContentView(R.layout.activity_splash_screen);
         imageView = findViewById(R.id.imageView);
         textView = findViewById(R.id.textView);
+        uptadeaide=findViewById(R.id.imageView2);
 
         Animation animation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.anime);
         Animation sclaeanimation = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.scalea_nime);
         imageView.setAnimation(sclaeanimation);
         textView.setAnimation(animation);
+        uptadeaide.setAnimation(animation);
 
         new Handler().postDelayed(new Runnable() {
             @Override

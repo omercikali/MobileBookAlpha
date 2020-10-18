@@ -1,7 +1,9 @@
 package com.example.mobilebookalpha;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -65,11 +67,22 @@ public class MainActivity extends AppCompatActivity {
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FirebaseAuth.getInstance().signOut();
-                Intent intent = new Intent(MainActivity.this, Login_page.class);
-                startActivity(intent);
-                finish();
-                overridePendingTransition(R.anim.turn_anim_in,R.anim.turn_anim_out);
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                builder.setTitle("Mobildefter");
+                builder.setMessage("Çıkış yapmak istediğinize eminmisiniz ?");
+                builder.setNegativeButton("hayır",null);
+                builder.setPositiveButton("evet", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        FirebaseAuth.getInstance().signOut();
+                        Intent intent = new Intent(MainActivity.this, Login_page.class);
+                        startActivity(intent);
+                        finish();
+                        overridePendingTransition(R.anim.turn_anim_in,R.anim.turn_anim_out);
+                    }
+                });
+                builder.show();
+
             }
         });
 
