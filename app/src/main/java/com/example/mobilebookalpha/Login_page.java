@@ -22,7 +22,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class Login_page extends AppCompatActivity {
 
-    private Button withphonenumber, withgoogleaccount, loginbutton;
+    private Button  withgoogleaccount, loginbutton,telefon_no_ile;
     private EditText emailet, passwordet;
     private FirebaseAuth auth;
     private TextView forgatmypass;
@@ -33,10 +33,10 @@ public class Login_page extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_page);
 
+        telefon_no_ile=findViewById(R.id.telefon_no_ile);
         progressBar = findViewById(R.id.progressBar);
         emailet = findViewById(R.id.emailet);
         passwordet = findViewById(R.id.passwordet);
-        withphonenumber = findViewById(R.id.withphonenumber);
         auth = FirebaseAuth.getInstance();
         withgoogleaccount = findViewById(R.id.withgooglebtn);
         loginbutton = findViewById(R.id.button);
@@ -44,38 +44,39 @@ public class Login_page extends AppCompatActivity {
 
         progressBar.setVisibility(View.INVISIBLE);
 
+        telefon_no_ile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Login_page.this, With_Phone_Number.class);
+                startActivity(intent);
+                overridePendingTransition(R.anim.anim_in, R.anim.anim_out);
+            }
+        });
+
         forgatmypass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(Login_page.this, Forgat_pass.class);
                 startActivity(i);
+                overridePendingTransition(R.anim.anim_in,R.anim.anim_out);
             }
         });
 
         loginbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                progressBar.setVisibility(View.VISIBLE);
                 String usernameStr = emailet.getText().toString();
                 String passwordStr = passwordet.getText().toString();
                 if (!usernameStr.equals("")) {
                     singin(usernameStr, passwordStr);
-                    progressBar.setVisibility(View.VISIBLE);
+
                 } else {
 
                     Toast.makeText(getApplicationContext(), "lütfen geçerli bir e-posta giriniz", Toast.LENGTH_LONG).show();
+
                 }
 
-            }
-        });
-
-
-        withphonenumber.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Login_page.this, Sing_up_page.class);
-                startActivity(intent);
-                overridePendingTransition(R.anim.anim_in, R.anim.anim_out);
             }
         });
     }
@@ -102,9 +103,11 @@ public class Login_page extends AppCompatActivity {
                             Intent intent = new Intent(Login_page.this, MainActivity.class);
                             startActivity(intent);
                             finish();
+                            overridePendingTransition(R.anim.anim_in,R.anim.anim_out);
                         } else {
                             // If sign in fails, display a message to the user.
                             Toast.makeText(getApplicationContext(), "telefon numarası veya şifre hatalı", Toast.LENGTH_LONG).show();
+                            progressBar.setVisibility(View.INVISIBLE);
                         }
                     }
                 });
@@ -123,5 +126,4 @@ public class Login_page extends AppCompatActivity {
             finish();
         }
     }
-
 }

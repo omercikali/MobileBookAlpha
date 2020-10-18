@@ -27,10 +27,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="150dp"
-        android:layout_marginTop="31dp"
+        android:layout_marginTop="28dp"
         android:layout_marginEnd="150dp"
+        android:onClick="koduistecl"
         android:text="kodu iste"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextPhone" />
 
@@ -41,6 +43,7 @@
         android:layout_marginStart="153dp"
         android:layout_marginTop="33dp"
         android:layout_marginEnd="154dp"
+        android:onClick="dogrulacl"
         android:text="doğrula"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -64,6 +67,7 @@
         android:id="@+id/kodualamadım"
         android:layout_width="wrap_content"
         android:layout_height="46dp"
+        android:onClick="kodualamadimcl"
         android:text="kodu alamadım"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -84,7 +88,7 @@
         app:layout_constraintTop_toBottomOf="@+id/kodualamadım" />
 
     <ProgressBar
-        android:id="@+id/progressBar2"
+        android:id="@+id/alimeysdfsdfsdfsdf"
         style="?android:attr/progressBarStyle"
         android:layout_width="57dp"
         android:layout_height="49dp"

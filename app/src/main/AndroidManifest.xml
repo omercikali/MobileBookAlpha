@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/circle"
         android:supportsRtl="true"
         android:theme="@style/Theme.Mobilebookalpha">
-        <activity android:name=".Advantage_Damage_page"></activity>
+        <activity android:name=".With_Phone_Number"></activity>
+        <activity android:name=".Advantage_Damage_page" />
         <activity android:name=".Fertilizier_page" />
         <activity android:name=".Soldgoods_page" />
         <activity android:name=".Workers_page" />

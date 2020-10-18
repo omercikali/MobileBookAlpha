@@ -23,14 +23,12 @@ import com.google.firebase.auth.PhoneAuthProvider;
 
 import java.util.concurrent.TimeUnit;
 
-import javax.security.auth.callback.CallbackHandler;
-
 public class Sing_up_page extends AppCompatActivity {
     private EditText gelenkodet, telefonnumberet;
     private Button koduiste, dogrula, kodualamadım;
     private String codesend;
     private TextView waittw;
-    private ProgressBar progressBar;
+    private ProgressBar progressBar1;
     private FirebaseAuth auth = FirebaseAuth.getInstance();
 
     @Override
@@ -40,8 +38,7 @@ public class Sing_up_page extends AppCompatActivity {
 
         Toast.makeText(getApplicationContext(), "Tek kullanımlık kodu kullanarak ile telefon numaranız ile herzaman giriş yapabilirsiniz şifre oluşturmanız gerekmez", Toast.LENGTH_LONG).show();
 
-        progressBar.findViewById(R.id.progressBar2);
-        progressBar.setVisibility(View.INVISIBLE);
+        progressBar1.findViewById(R.id.alimeysdfsdfsdfsdf);
         waittw = findViewById(R.id.waittw);
         kodualamadım = findViewById(R.id.kodualamadım);
         gelenkodet = findViewById(R.id.turncodeet);
@@ -49,62 +46,12 @@ public class Sing_up_page extends AppCompatActivity {
         koduiste = findViewById(R.id.koduistebtn);
         dogrula = findViewById(R.id.dogrula);
 
+        progressBar1.setVisibility(View.INVISIBLE);
         waittw.setVisibility(View.INVISIBLE);
         gelenkodet.setVisibility(View.INVISIBLE);
         dogrula.setVisibility(View.INVISIBLE);
         kodualamadım.setVisibility(View.INVISIBLE);
 
-        kodualamadım.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                gelenkodet.setVisibility(View.INVISIBLE);
-                dogrula.setVisibility(View.INVISIBLE);
-                telefonnumberet.setVisibility(View.VISIBLE);
-                koduiste.setVisibility(View.VISIBLE);
-                waittw.setVisibility(View.INVISIBLE);
-            }
-        });
-
-        koduiste.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String userphonenumber = telefonnumberet.getText().toString();
-                if (userphonenumber.equals("")) {
-                    Toast.makeText(getApplicationContext(), "Lütfen geçerli bir telefon numarası giriniz", Toast.LENGTH_LONG).show();
-                } else {
-                    PhoneAuthProvider.getInstance().verifyPhoneNumber(
-                            userphonenumber, 120, TimeUnit.SECONDS,
-                            Sing_up_page.this, mCallbacks);
-
-                    waittw.setVisibility(View.VISIBLE);
-                    telefonnumberet.setVisibility(View.INVISIBLE);
-                    koduiste.setVisibility(View.INVISIBLE);
-                    gelenkodet.setVisibility(View.VISIBLE);
-                    dogrula.setVisibility(View.VISIBLE);
-                    kodualamadım.setVisibility(View.VISIBLE);
-                    new CountDownTimer(120000, 1000) {
-                        @Override
-                        public void onTick(long millisUntilFinished) {
-                            waittw.setText(" kodun geçerlilik süresi: " + millisUntilFinished / 1000);
-
-                        }
-
-                        @Override
-                        public void onFinish() {
-
-
-                        }
-                    }.start();
-                }
-            }
-        });
-
-        dogrula.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                singWithphonecode();
-            }
-        });
     }
 
     private void singWithphonecode() {
@@ -123,11 +70,11 @@ public class Sing_up_page extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                             progressBar.setVisibility(View.VISIBLE);
+                            progressBar1.setVisibility(View.VISIBLE);
                             Intent i = new Intent(Sing_up_page.this, Login_page.class);
                             startActivity(i);
                             finish();
-                            overridePendingTransition(R.anim.anim_in,R.anim.anim_out);
+                            overridePendingTransition(R.anim.anim_in, R.anim.anim_out);
 
                         } else {
                             Toast.makeText(getApplicationContext(), "girdiğiniz kod hatalı", Toast.LENGTH_LONG).show();
@@ -160,4 +107,38 @@ public class Sing_up_page extends AppCompatActivity {
         super.onBackPressed();
         overridePendingTransition(R.anim.turn_anim_in, R.anim.turn_anim_out);
     }
+
+
+    public void koduistecl(View view) {
+        String userphonenumber = telefonnumberet.getText().toString();
+        if (userphonenumber.equals("")) {
+            Toast.makeText(getApplicationContext(), "Lütfen geçerli bir telefon numarası giriniz", Toast.LENGTH_LONG).show();
+        } else {
+            PhoneAuthProvider.getInstance().verifyPhoneNumber(
+                    userphonenumber, 120, TimeUnit.SECONDS,
+                    Sing_up_page.this, mCallbacks);
+
+            waittw.setVisibility(View.VISIBLE);
+            telefonnumberet.setVisibility(View.INVISIBLE);
+            koduiste.setVisibility(View.INVISIBLE);
+            gelenkodet.setVisibility(View.VISIBLE);
+            dogrula.setVisibility(View.VISIBLE);
+            kodualamadım.setVisibility(View.VISIBLE);
+            new CountDownTimer(120000, 1000) {
+                @Override
+                public void onTick(long millisUntilFinished) {
+                    waittw.setText(" kodun geçerlilik süresi: " + millisUntilFinished / 1000);
+                }
+
+                @Override
+                public void onFinish() {
+                }
+            }.start();
+        }
+
+    }
+   protected void dogrulacl(View view){
+       singWithphonecode();
+
+   }
 }
